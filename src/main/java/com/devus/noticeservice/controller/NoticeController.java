@@ -19,12 +19,12 @@ import lombok.extern.slf4j.Slf4j;
 @Slf4j
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/notice")
+@RequestMapping("/api/notice")
 public class NoticeController {
 
 	private final NoticeService noticeService;
 
-	@GetMapping("/")
+	@GetMapping("")
 	public Page<ResNoticeFindDTO> findNotice(@PageableDefault Pageable pageable) throws Exception {
 		return noticeService.findNotice(pageable).map(p -> {
 			return new ResNoticeFindDTO(p);

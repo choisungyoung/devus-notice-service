@@ -1,0 +1,9 @@
+= NOTICE API 문서
+:toc: left
+
+== API Documents
+.GET Notice Request
+include::{snippets}/get-notice/http-request.adoc[]
+
+.GET Notice Response
+include::{snippets}/get-notice/http-response.adoc[]
