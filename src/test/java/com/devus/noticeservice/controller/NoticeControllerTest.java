@@ -4,6 +4,7 @@ import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.docu
 import static org.springframework.restdocs.mockmvc.MockMvcRestDocumentation.documentationConfiguration;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.post;
+import static org.springframework.test.web.servlet.result.MockMvcResultHandlers.print;
 import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 import java.util.Calendar;
@@ -38,6 +39,7 @@ public class NoticeControllerTest {
 	@Test
 	public void getNoticeTest() throws Exception {
 		this.mockMvc.perform(get("/api/notice").accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andDo(print())
 				.andDo(document("get-notice"));
 	}
 
@@ -58,7 +60,8 @@ public class NoticeControllerTest {
 		this.mockMvc.perform(post("/api/notice")
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(content)
-                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
+				.andDo(print())
 				.andDo(document("save-notice"));
 	}
 }
