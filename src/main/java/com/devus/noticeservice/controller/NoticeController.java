@@ -3,6 +3,7 @@ package com.devus.noticeservice.controller;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.web.PageableDefault;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
@@ -32,7 +33,7 @@ public class NoticeController {
 	}
 
 	@PostMapping
-	public ResNoticeFindDTO saveNotice(@RequestBody() ReqNoticeSaveDTO dto) throws Exception {
+	public ResNoticeFindDTO saveNotice(@Validated @RequestBody ReqNoticeSaveDTO dto) throws Exception {
 		return new ResNoticeFindDTO(noticeService.saveNotice(dto.toModel()));
 	}
 }
