@@ -33,7 +33,7 @@ public class GlobalExceptionControllerAdvice {
 		
 		return new ResponseEntity<ErrorResponse>(
 				ErrorResponse.builder()
-					.code("E0003")
+					.code("E0303")
 					.title("찾을 수 없음")
 					.message(e.toString())
 					.details(Collections.<String>emptyList())
@@ -57,7 +57,7 @@ public class GlobalExceptionControllerAdvice {
 		
 		return new ResponseEntity<ErrorResponse>(
 				ErrorResponse.builder()
-					.code("E0002")
+					.code("E0302")
 					.title("입력값 검증 에러")
 					.message(message)
 					.details(details)
@@ -71,7 +71,7 @@ public class GlobalExceptionControllerAdvice {
 
 		return new ResponseEntity<ErrorResponse>(
 				ErrorResponse.builder()
-					.code("E0001")
+					.code("E0301")
 					.title("에러 발생")
 					.message(e.toString())
 					.details(Arrays.stream(e.getStackTrace()).map(st -> {

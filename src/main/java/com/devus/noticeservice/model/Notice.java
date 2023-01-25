@@ -1,8 +1,6 @@
 package com.devus.noticeservice.model;
 
-import java.util.Date;
-
-import org.hibernate.annotations.CreationTimestamp;
+import java.time.LocalDateTime;
 
 import jakarta.persistence.Column;
 import jakarta.persistence.Entity;
@@ -11,8 +9,6 @@ import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.SequenceGenerator;
 import jakarta.persistence.Table;
-import jakarta.persistence.Temporal;
-import jakarta.persistence.TemporalType;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Data;
@@ -25,7 +21,7 @@ import lombok.NoArgsConstructor;
 @Table(name = "DVS_NOTICE")
 @AllArgsConstructor
 @NoArgsConstructor
-public class Notice {
+public class Notice extends BaseTimeEntity {
 
 	@Id
 	@GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "DVS_NOTICE_SEQ_GEN")
@@ -41,13 +37,8 @@ public class Notice {
 	private long hit = 0;
 
 	@Column(nullable = false)
-	private Date beginAt;
+	private LocalDateTime beginAt;
 
 	@Column(nullable = false)
-	private Date expireAt;
-
-	@Column(nullable = false, updatable = false)
-	@Temporal(TemporalType.TIMESTAMP)
-	@CreationTimestamp
-	private Date createAt;
+	private LocalDateTime expireAt;
 }

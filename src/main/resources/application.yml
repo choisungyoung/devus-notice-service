@@ -1,6 +1,6 @@
 
 server:
-  port: 8080
+  port: 8081
   servlet:
     encoding:
       charset: UTF-8
@@ -18,18 +18,18 @@ spring:
     show-sql: false
     generate-ddl: false
     hibernate:
-      #ddl-auto: create
-      ddl-auto: update
+      ddl-auto: create
+      #ddl-auto: update
     database: postgresql
     database-platform: org.hibernate.dialect.PostgreSQLDialect
 
   datasource:
     driver-class-name: org.postgresql.Driver
-    url: jdbc:postgresql://notworking-db.cnnmdrrkqlx2.ap-northeast-2.rds.amazonaws.com:5432/devus_db
+    url: 
     username: 
-    password: 
+    password:
     
-bokboot:
+devus-notice-service:
   max-source-length: 1000000
 
 

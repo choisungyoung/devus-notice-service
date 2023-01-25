@@ -1,9 +1,16 @@
 = NOTICE API 문서
 :toc: left
 
-== API Documents
+== 공지사항 조회
 .GET Notice Request
 include::{snippets}/get-notice/http-request.adoc[]
 
 .GET Notice Response
 include::{snippets}/get-notice/http-response.adoc[]
+
+== 공지사항 등록
+.POST Notice Request
+include::{snippets}/save-notice/http-request.adoc[]
+
+.POST Notice Response
+include::{snippets}/save-notice/http-response.adoc[]

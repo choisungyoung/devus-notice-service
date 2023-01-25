@@ -49,6 +49,28 @@ public class NoticeControllerTest {
 	    Date d = new Date(cal.getTimeInMillis());
 	    
 	    ReqNoticeSaveDTO dto = ReqNoticeSaveDTO.builder()
+				.title("정상 제톡")
+				.contents("정상 내용")
+				.beginAt("2022-11-11T11:11:11")
+				.expireAt("2022-11-11T11:11:11")
+				.build();
+        Gson gson = new Gson();
+        String content = gson.toJson(dto);
+        
+		this.mockMvc.perform(post("/api/notice")
+                .contentType(MediaType.APPLICATION_JSON)
+                .content(content)
+                .accept(MediaType.APPLICATION_JSON)).andExpect(status().isOk())
+				.andDo(print())
+				.andDo(document("save-notice"));
+	}
+	
+	@Test
+	public void saveNoticeErrorTest() throws Exception {
+		Calendar cal = Calendar.getInstance();
+	    Date d = new Date(cal.getTimeInMillis());
+	    
+	    ReqNoticeSaveDTO dto = ReqNoticeSaveDTO.builder()
 				.title("제목제목제목제목제목제목제목")
 				.contents("내용내용내용내용내용내용내용내용내용")
 				.beginAt("2022-11-11 11:11:11")
@@ -61,7 +83,6 @@ public class NoticeControllerTest {
                 .contentType(MediaType.APPLICATION_JSON)
                 .content(content)
                 .accept(MediaType.APPLICATION_JSON)).andExpect(status().isBadRequest())
-				.andDo(print())
-				.andDo(document("save-notice"));
+				.andDo(print());
 	}
 }
